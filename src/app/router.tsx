@@ -4,6 +4,7 @@ import RootLayout from "../components/layout/RootLayout";
 import AIPage from "../pages/ai/AIPage";
 import HomePage from "../pages/home/HomePage";
 import MangaDetailPage from "../pages/manga/MangaDetailPage";
+import NotFoundPage from "../pages/not-found/NotFoundPage";
 import SearchPage from "../pages/search/SearchPage";
 
 export const router = createBrowserRouter([
@@ -28,5 +29,10 @@ export const router = createBrowserRouter([
         element: <AIPage />,
       },
     ],
+  },
+
+  {
+    path: "*",
+    element: <NotFoundPage />,
   },
 ]);
