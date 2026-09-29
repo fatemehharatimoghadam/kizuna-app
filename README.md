@@ -206,3 +206,193 @@ This structure prevents UI components from being tightly coupled to API implemen
 ---
 
 ## Routes
+| Route | Description |
+|---|---|
+| / | Home and discovery |
+| /search | Manga search and filtering |
+| /manga/:id | Manga details |
+| /ai | AI-powered manga discovery |
+| * | Custom 404 page |
+
+---
+
+## Environment Variables
+
+Create a .env file in the project root:
+
+VITE_API_URL=http://localhost:3000/v4
+VITE_AI_API_URL=http://localhost:3001
+An `.env.example file can be used as a reference.
+
+Do not commit private API credentials to the repository.
+
+The AI server should keep its provider credentials in its own environment file.
+
+---
+
+## Running the Project
+
+KIZUNA uses three local services during development:
+
+``text
+Manga API       → http://localhost:3000
+AI Server       → http://localhost:3001
+Frontend        → http://localhost:5173
+
+### 1. Start the Manga API
+
+Open a terminal in the manga backend project.
+
+Install dependencies:
+
+bash
+npm install
+
+Create the backend environment configuration if required, then run:
+
+bash
+npm run start:dev
+
+The manga API should now be available at:
+
+text
+http://localhost:3000
+
+---
+
+### 2. Start the AI Server
+
+Open another terminal and navigate to:
+
+bash
+cd ai-server
+
+Install its dependencies if necessary:
+
+bash
+npm install
+
+Create:
+
+text
+ai-server/.env
+
+and configure the required AI provider credentials.
+
+Then start the AI server:
+
+bash
+npm run dev
+
+It should run at:
+
+text
+http://localhost:3001
+
+Never expose or commit the AI API key.
+
+---
+
+### 3. Start the Frontend
+
+Open another terminal in the KIZUNA project root.
+
+Install dependencies:
+
+bash
+npm install
+
+Start Vite:
+
+bash
+npm run dev
+
+Open:
+
+text
+http://localhost:5173
+
+---
+
+## Production Check
+
+Before committing or deploying changes, run:
+
+bash
+npm run lint
+
+and:
+
+bash
+npm run build
+
+Both commands should complete successfully.
+
+---
+
+## UX Highlights
+
+KIZUNA includes several UX improvements beyond basic manga browsing:
+
+- Smooth route scroll behavior
+- Hash-based section navigation
+- Mobile navigation
+- Swipeable trending carousel
+- Previous/next carousel controls
+- Loading skeletons
+- Empty states
+- Error states
+- Responsive filter controls
+- Persistent theme selection
+- Custom 404 experience
+- AI loading and error feedback
+- Responsive Persian RTL translation display
+
+---
+
+## Security
+
+AI credentials are not stored in frontend source code.
+
+Sensitive environment files such as:
+
+text
+.env
+ai-server/.env
+`
+
+should remain excluded from Git.
+
+Only public configuration values required by the frontend use the `VITE_` prefix.
+
+---
+
+## Project Concept
+
+The name KIZUNA (絆) represents connection or bonds.
+
+The project applies that concept to manga discovery: instead of presenting users with only a static catalog, KIZUNA provides multiple paths for connecting readers with stories they may enjoy.
+
+These include traditional search, genre exploration, trending discovery, random discovery, and natural-language AI-assisted discovery.
+
+---
+
+## Status
+
+Current implementation includes:
+
+- Manga browsing
+- Search and filtering
+- Manga detail pages
+- Character display
+- Trending carousel
+- Genre discovery
+- Random discovery
+- AI manga finder
+- AI Persian synopsis translation
+- Dark and light themes
+- Responsive layouts
+- Custom 404 page
+- Loading and error states
+
+The project passes both linting and production build checks.
